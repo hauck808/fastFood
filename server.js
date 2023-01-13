@@ -1,6 +1,9 @@
 import express from 'express';
 import { writeFile } from 'fs';
 import morgan from 'morgan';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 app.use(morgan('tiny'));
@@ -23,4 +26,6 @@ app.post('/orders', (req, res) => {
 
 app.get('*', (req, res) => res.status(404).send('<h1>Not found</h1>'));
 
-app.listen(10000, () => console.log(`Listening on port ${10000}`));
+const PORT = process.env.PORT ?? 5555;
+
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
