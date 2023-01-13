@@ -15,6 +15,13 @@ const myApp = {
 	},
 	methods: {
 		submit() {
+			alert(
+				`Full Name: ${this.fullname}
+Mail: ${this.email}
+Phone:${this.phone}
+Food:${this.food}, ${this.seasoning}
+Side Dishes: ${this.sideDish.join(', ')}`
+			);
 			axios.post('/orders', {
 				fullname: this.fullname,
 				email: this.email,
