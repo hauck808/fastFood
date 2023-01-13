@@ -23,4 +23,4 @@ app.post('/orders', (req, res) => {
 
 app.get('*', (req, res) => res.status(404).send('<h1>Not found</h1>'));
 
-app.listen(3000, () => console.log(`Listening on port ${3000}`));
+app.listen(10000, () => console.log(`Listening on port ${10000}`));
