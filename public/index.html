@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Order Food</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+	</head>
+	<link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/app.css" />
+	<body style="background-image: url('images/71knQ3-rdbL._AC_SL1001_.jpg')">
+		<div class="d-flex justify-content-center">
+			<div id="app" class="sheet p-5 mt-3 text-white">
+				<h4 class="text-center" style="font-weight: 600">Your Order</h4>
+				<form @submit.prevent="send">
+					<label for="name" class="mb-2 mt-3">Full Name</label>
+					<input
+						type="text"
+						id="name"
+						v-model="fullname"
+						class="form-control"
+						placeholder="Enter your full name" />
+					<label for="email" class="mb-2 mt-3">Email</label>
+					<input
+						type="email"
+						v-model="email"
+						class="form-control"
+						id="email"
+						placeholder="Enter your email" />
+					<label for="phone" class="mb-2 mt-3">Phone Number</label>
+					<input
+						type="tel"
+						v-model="phone"
+						class="form-control"
+						id="phone"
+						placeholder="Enter your phone number" />
+					<label for="food" class="mb-2 mt-3">Select a food</label>
+					<select
+						class="form-select"
+						id="food"
+						aria-label="Example select with button addon"
+						v-model="food">
+						<option selected>Choose...</option>
+						<option v-for="food of types" :value="food">{{food}}</option>
+					</select>
+					<label for="season" class="mb-2 mt-3">Seasoning:</label>
+					<div class="d-flex justify-content-around w-75" id="season">
+						<div class="form-check" v-for="season of seasonings">
+							<input
+								class="form-check-input"
+								type="radio"
+								name="seasoningRadio"
+								:id="'seasoning' + season"
+								:value="season"
+								v-model="seasoning" />
+							<label class="form-check-label" :for="'seasoning' + season">
+								{{season}}
+							</label>
+						</div>
+					</div>
+					<label for="sideDishes" class="mb-2 mt-3">Side Dishes:</label>
+					<div id="sideDishes">
+						<div v-for="dish of sideDishes">
+							<input type="checkbox" v-model="sideDish" :value="dish" />
+							{{dish}}
+						</div>
+					</div>
+					<div class="d-flex justify-content-center">
+						<button @click="submit" class="btn btn-outline-secondary mt-3">
+							Submit
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.45/vue.global.min.js"></script>
+		<script type="module" src="./js/app.js"></script>
+	</body>
+</html>
